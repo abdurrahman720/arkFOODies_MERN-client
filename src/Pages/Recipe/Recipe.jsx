@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
+import Reviews from "../../Components/Reviews";
 const Recipe = () => {
   const { recipe } = useLoaderData();
   console.log(recipe);
@@ -46,11 +47,11 @@ const Recipe = () => {
         <h2 className="card-title justify-center text-3xl font-custom1 py-10">
           Let's Check What Are Said by the Community about this Cuisine!!
               </h2>
-              <div className="b">
-                  <p>Add your own review: </p>
+              <div className="mb-5">
+                  <Link to={`/review/${_id}`}><p>Add your own review: </p></Link>
               </div>
               <div className="border-2 border-spacing-5">
-                  <p>Review Section </p>
+                  <Reviews></Reviews>
               </div>
       </div>
     </div>
