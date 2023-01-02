@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import Reviews from "../Components/Reviews";
 import Main from "../Layouts/Main";
+import Login from "../Pages/Auth/Login";
+import Register from "../Pages/Auth/Register";
 import Home from "../Pages/Home/Home";
 import Recipe from "../Pages/Recipe/Recipe";
 import Recipies from "../Pages/Recipe/Recipies";
@@ -32,7 +34,15 @@ export const router = createBrowserRouter([
             path: "/review/:id",
             loader: ({params})=>fetch(`http://localhost:5001/recipe/${params.id}`),
             element:<Review></Review>
-      }
+        },
+        {
+            path: '/login',
+            element:<Login></Login>
+        },
+        {
+            path: '/register',
+            element:<Register></Register>
+        }
     ],
   },
 ]);
