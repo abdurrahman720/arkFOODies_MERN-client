@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDSeJHV206FYRon-viWWB_kqP5CGZS2QrY",
-  authDomain: "ark-food.firebaseapp.com",
-  projectId: "ark-food",
-  storageBucket: "ark-food.appspot.com",
-  messagingSenderId: "1016785170670",
-  appId: "1:1016785170670:web:9fab48f457e270680c83ff"
+  apiKey: "AIzaSyCPtmigiIekNioj9UUNA63TVlNjqYDqvI4",
+  authDomain: "ark-foodies.firebaseapp.com",
+  projectId: "ark-foodies",
+  storageBucket: "ark-foodies.appspot.com",
+  messagingSenderId: "852924980592",
+  appId: "1:852924980592:web:46696f7b4376cf69af43b5"
 };
 
 // Initialize Firebase

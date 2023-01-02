@@ -38,7 +38,7 @@ const Login = () => {
         <div className="text-center lg:text-left bg-mybg">
           <img className="w-3/4" src={login} alt="" />
         </div>
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-mybg my-10 ">
+        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-mybg my-10 font-custom1 text-myprimary ">
           <h1 className="text-5xl font-bold text-center">Login</h1>
           <form onSubmit={handleLogin} className="card-body">
             <div className="form-control">
@@ -70,7 +70,7 @@ const Login = () => {
             </div>
             {error && <p className="text-warning">{error}</p>}
             <div className="form-control mt-6">
-              <input className="btn btn-primary" type="submit" value="Login" />
+              <input className="btn btn-myprimary" type="submit" value="Login" />
             </div>
           </form>
           <p className="mx-5">

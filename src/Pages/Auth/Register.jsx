@@ -5,7 +5,7 @@ import { UserContext } from "../../Context/UserContext/Context";
 
 const Register = () => {
 
-  const { emailSignUp, updateName } = useContext(UserContext);
+  const { emailSignUp, updateUser } = useContext(UserContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
@@ -16,10 +16,11 @@ const Register = () => {
       const name = form.name.value;
         const email = form.email.value;
       const password = form.password.value;
+      const photo  = form.photo.value;
       emailSignUp(email, password)
           .then(userCredentials => {
             const user = userCredentials.user;
-              updateName(name)
+              updateUser(name,photo)
                   .then(() => {
                   console.log('updated name');
                   })
@@ -42,7 +43,7 @@ const Register = () => {
         <div className="text-center lg:text-left">
           <img className="w-3/4" src={login} alt="" />
         </div>
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl my-10 bg-mybg ">
+        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl my-10 font-custom1 text-myprimary bg-mybg ">
           <h1 className="text-5xl font-bold text-center">Register</h1>
           <form onSubmit={handleSignUp} className="card-body">
             <div className="form-control">
@@ -53,6 +54,18 @@ const Register = () => {
                 type="text"
                 placeholder="Your Name"
                 name="name"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Photo URL</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Photo URL"
+                name="photo"
                 className="input input-bordered"
                 required
               />
@@ -83,7 +96,7 @@ const Register = () => {
             </div>
             <div className="form-control mt-6">
               <input
-                className="btn btn-primary"
+                className="btn btn-myprimary"
                 type="submit"
                 value="Sign Up"
               />
