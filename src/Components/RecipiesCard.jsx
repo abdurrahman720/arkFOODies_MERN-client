@@ -1,5 +1,5 @@
 import React from "react";
-
+import { FaStar } from 'react-icons/fa';
 const RecipiesCard = ({ recipe }) => {
   const { _id, title, image, description, cuisine, recipeType, rating } =
     recipe;
@@ -9,17 +9,17 @@ const RecipiesCard = ({ recipe }) => {
         <img src={image} alt={title} />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">
+        <h2 className="card-title font-custom1">
           {title}
-          <div className="badge badge-myprimary">{rating}</div>
+          <div className="badge badge-myprimary">{rating} <FaStar></FaStar> </div>
         </h2>
-        <p> {description.slice(0, 150)} ...</p>
+        <p className="font-custom2 text-xl"> {description.slice(0, 150)} ...</p>
         <div className="card-actions justify-end">
-          <div className="badge badge-outline">{cuisine}</div>
-          <div className="badge badge-outline">{recipeType}</div>
+          <div className="badge badge-outline font-custom2">{cuisine}</div>
+          <div className="badge badge-outline font-custom2">{recipeType}</div>
               </div>
               <div className="card-actions justify-center mt-4">
-        <button className="btn btn-outline btn-myprimary">Try It!</button>
+        <button className="btn btn-outline btn-myprimary font-custom1">Try It!</button>
       </div>
       </div>
       
