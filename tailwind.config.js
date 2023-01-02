@@ -8,7 +8,13 @@ module.exports = {
       custom1: ["Custom-1", "sans-serif"],
       custom2: ["Custom-2", "sans-serif"],
     },
-    extend: {},
+   
+    extend: {
+      colors: {
+        myprimary: '#454545',
+        mybg: '#FBEAAB'
+      },
+    },
 
   },
   plugins: [require("daisyui")],
