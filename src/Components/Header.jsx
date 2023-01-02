@@ -44,6 +44,14 @@ const Header = () => {
             <li>
               <Link to='/recipes'>Recipes</Link>
             </li>
+            {
+                      user?.uid && <><li>
+                      <Link to='/myreviews'>My Reviews</Link>
+                      </li>
+                      <li>
+          <Link to='/addrecipe'>Add Recipe</Link>
+          </li></>
+                  }
           </ul>
         </div>
         <img className="w-16 m-0 p-0" src={logo} alt="" />

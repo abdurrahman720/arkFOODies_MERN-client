@@ -54,7 +54,7 @@ const Recipe = () => {
       </div>
       <hr />
       <div className="">
-        <h2 className="card-title justify-center text-3xl font-custom1 py-10">
+        <h2 className="card-title justify-center text-3xl font-custom1 py-10 px-2">
           Let's Check What Are Said by the Community about this Cuisine!!
               </h2>
               <div className="mb-5 text-center">

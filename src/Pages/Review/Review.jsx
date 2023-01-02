@@ -27,7 +27,7 @@ const Review = () => {
       reviewText: reviewText,
       rating: rating,
     };
-    console.log(review);
+    
     //positng the review to server with fetch
     fetch("http://localhost:5001/review", {
       method: "POST",
@@ -38,7 +38,7 @@ const Review = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        
         if (data.acknowledged === true) {
           alert("Review posted successfully");
           form.reset();
