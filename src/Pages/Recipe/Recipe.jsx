@@ -1,12 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import Reviews from "../../Components/Reviews";
 const Recipe = () => {
   const { recipe } = useLoaderData();
-  console.log(recipe);
+//   console.log(recipe);
   const { title, image, rating, description, cuisine, recipeType, _id } =
-    recipe;
+      recipe;
+    
+    const [reviews, setReviews] = useState([]);
+    
+    useEffect(() => {
+        fetch(`http://localhost:5001/review/${_id}`)
+            .then(res => res.json())
+            .then(data => setReviews(data))
+        
+    },[_id])
+    
   // const [recipe, setRecipe] = useState({});
 
   return (
@@ -50,9 +60,13 @@ const Recipe = () => {
               <div className="mb-5">
                   <Link to={`/review/${_id}`}><p>Add your own review: </p></Link>
               </div>
-              <div className="border-2 border-spacing-5">
-                  <Reviews></Reviews>
+              {
+                  reviews?.length===0? <p>No reviews</p> : <div className="p-5">
+                  {
+                      reviews.map(review=><Reviews key={review._id} review={review}></Reviews>)
+                  }
               </div>
+              }
       </div>
     </div>
   );

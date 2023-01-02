@@ -9,13 +9,48 @@ const Review = () => {
 
   const { _id, title } = recipe;
 
+  const handlePlaceReview = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = user?.displayName || "anonymus";
+    const email = user?.email || "unregistered";
+    const reviewText = form.review.value;
+    const rating = form.rating.value;
+
+    const review = {
+      recipeID: _id,
+      reviewerName: name,
+      reviewerEmail: email,
+      reviewerPhoto: user?.photoURL,
+      reviewText: reviewText,
+      rating: rating,
+    };
+    console.log(review);
+    //positng the review to server with fetch
+    fetch("http://localhost:5001/review", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(review),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged === true) {
+          alert("Review posted successfully");
+          form.reset();
+        }
+      });
+  };
+
   return (
     <div className="bg-mybg text-center ">
       <h1 className="text-3xl font-custom1 text-myprimary">
         {" "}
         Review for {title}
       </h1>
-      <form action="" className="p-5 ">
+      <form onSubmit={handlePlaceReview} className="p-5 ">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mx-5 p-5">
           <div className="flex">
             <p className="font-custom1 font-bold m-2">Name: </p>
@@ -66,7 +101,9 @@ const Review = () => {
                 <option value="3">3</option>
                 <option value="3.5">3.5</option>
                 <option value="4">4</option>
-                <option value="4.5" selected>4.5</option>
+                <option value="4.5" selected>
+                  4.5
+                </option>
                 <option value="5">5</option>
               </select>
             </p>
