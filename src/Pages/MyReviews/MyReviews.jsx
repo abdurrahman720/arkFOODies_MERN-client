@@ -50,7 +50,11 @@ const MyReviews = () => {
             console.log(data);
             if (data.modifiedCount > 0) {
                 alert('Updated review successfully');
-                
+                const updatedReviewToShow = MyReviews.find(r => r._id === selectedReview._id);
+                updatedReviewToShow.reviewText = reviewText;
+                updatedReviewToShow.rating = rating;
+                const remainingReviews = MyReviews.filter(r => r._id !==selectedReview._id)
+                setMyReviews([updatedReviewToShow,...remainingReviews]);
             }
         })
 

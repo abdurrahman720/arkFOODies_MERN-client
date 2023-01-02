@@ -48,7 +48,7 @@ const MyReviewCard = ({ review, handleDelete, selectedReview, handleEdit, handle
           className="btn btn-outline btn-myprimary w-full"
           type="submit"
           value="Submit Your Review"
-        />
+        /> 
             </label>
           </div>
           </form>
