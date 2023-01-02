@@ -1,6 +1,6 @@
 import React from 'react';
-import cooking from '../assets/png/cooking.png';
-import logo from '../assets/png/logo-no-background.png'
+import cooking from '../../assets/png/cooking.png';
+import logo from '../../assets/png/logo-no-background.png'
 
 const Banner = () => {
     return (

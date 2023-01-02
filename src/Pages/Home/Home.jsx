@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import RecipiesCard from "../../Components/RecipiesCard";
-import Banner from "../Banner";
+import Banner from "./Banner";
 
 const Home = () => {
   const [recipeLimit, setRecipeLimit] = useState([]);
