@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/png/logo-no-background.png";
+import { UserContext } from "../Context/UserContext/Context";
 const Header = () => {
+    const {user, logOut } = useContext(UserContext);
+
+    const handleLogOut = () => {
+        logOut().then(() => {
+            alert('Log Out Success')
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+
   return (
     <div className="navbar bg-mybg font-custom1">
       <div className="navbar-start">
@@ -49,7 +60,9 @@ const Header = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login" className="btn">Join Us!</Link>
+              {
+                  user?.uid ? <Link onClick={handleLogOut} to="/" className="btn">Log Out</Link> : <Link to="/login" className="btn">Join Us!</Link>
+        }
       </div>
     </div>
   );
