@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import logo from "../assets/png/logo-no-background.png";
 import { UserContext } from "../Context/UserContext/Context";
 const Header = () => {
@@ -35,21 +35,21 @@ const Header = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-myprimary text-mybg rounded-box w-52"
           >
             {/* menu section */}
             <li>
-              <Link to='/'>Home</Link>
+              <NavLink className={({isActive})=> isActive ? 'btn btn-active btn-ghost' : ''} to='/home'>Home</NavLink>
             </li>
             <li>
-              <Link to='/recipes'>Recipes</Link>
+             <NavLink className={({isActive})=> isActive ? 'btn btn-active btn-ghost' : ''} to='/recipes'>Recipes</NavLink>
             </li>
             {
                       user?.uid && <><li>
-                      <Link to='/myreviews'>My Reviews</Link>
+                     <NavLink className={({isActive})=> isActive ? 'btn btn-active btn-ghost' : ''} to='/myreviews'>My Reviews</NavLink>
                       </li>
                       <li>
-          <Link to='/addrecipe'>Add Recipe</Link>
+         <NavLink className={({isActive})=> isActive ? 'btn btn-active btn-ghost' : ''} to='/addrecipe'>Add Recipe</NavLink>
           </li></>
                   }
           </ul>
@@ -60,24 +60,24 @@ const Header = () => {
         <ul className="menu menu-horizontal px-1">
           {/* menu section */}
           <li>
-          <Link to='/'>Home</Link>
+          <NavLink className={({isActive})=> isActive ? 'btn btn-active btn-ghost' : ''} to='/home'>Home</NavLink>
           </li>
           <li>
-            <Link to='/recipes'>Recipes</Link>
+           <NavLink className={({isActive})=> isActive ? 'btn btn-active btn-ghost' : ''} to='/recipes'>Recipes</NavLink>
                   </li>
                   {
                       user?.uid && <><li>
-                      <Link to='/myreviews'>My Reviews</Link>
+                     <NavLink className={({isActive})=> isActive ? 'btn btn-active btn-ghost' : ''} to='/myreviews'>My Reviews</NavLink>
                       </li>
                       <li>
-          <Link to='/addrecipe'>Add Recipe</Link>
+         <NavLink className={({isActive})=> isActive ? 'btn btn-active btn-ghost' : ''} to='/addrecipe'>Add Recipe</NavLink>
           </li></>
                   }
         </ul>
       </div>
       <div className="navbar-end">
               {
-                  user?.uid ? <Link onClick={handleLogOut} to="/" className="btn">Log Out</Link> : <Link to="/login" className="btn">Join Us!</Link>
+                  user?.uid ?<Link  onClick={handleLogOut} to="/" className="btn">Log Out</Link> :<Link  to="/login" className="btn">Join Us!</Link>
         }
       </div>
     </div>

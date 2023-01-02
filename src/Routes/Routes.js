@@ -4,15 +4,17 @@ import Main from "../Layouts/Main";
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
 import Home from "../Pages/Home/Home";
-import MyReviews from "../Pages/MyReviews/MyReviews";
+import MyReviews from "../Pages/Review/MyReviews";
 import Recipe from "../Pages/Recipe/Recipe";
 import Recipies from "../Pages/Recipe/Recipies";
 import Review from "../Pages/Review/Review";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Main></Main>,
+        element: <Main></Main>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
