@@ -4,6 +4,7 @@ import Main from "../Layouts/Main";
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
 import Home from "../Pages/Home/Home";
+import MyReviews from "../Pages/MyReviews/MyReviews";
 import Recipe from "../Pages/Recipe/Recipe";
 import Recipies from "../Pages/Recipe/Recipies";
 import Review from "../Pages/Review/Review";
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
         {
             path: '/register',
             element:<Register></Register>
+        },
+        {
+            path: '/myreviews',
+            element:<MyReviews></MyReviews>
         }
     ],
   },

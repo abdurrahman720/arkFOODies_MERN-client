@@ -56,7 +56,15 @@ const Header = () => {
           </li>
           <li>
             <Link to='/recipes'>Recipes</Link>
-          </li>
+                  </li>
+                  {
+                      user?.uid && <><li>
+                      <Link to='/myreviews'>My Reviews</Link>
+                      </li>
+                      <li>
+          <Link to='/addrecipe'>Add Recipe</Link>
+          </li></>
+                  }
         </ul>
       </div>
       <div className="navbar-end">

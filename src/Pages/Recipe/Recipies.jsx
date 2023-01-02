@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import RecipiesCard from "../../Components/RecipiesCard";
 
 const Recipies = () => {
@@ -11,7 +10,7 @@ const Recipies = () => {
         console.log(data);
         setRecipes(data);
       });
-  }, [recipes]);
+  }, []);
   return (
     <div>
       <div className="recipe py-10 bg-mybg">

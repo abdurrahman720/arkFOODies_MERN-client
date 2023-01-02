@@ -2,7 +2,7 @@ import React from 'react';
 import { FaStar } from 'react-icons/fa';
 
 const Reviews = ({ review }) => {
-    const { reviewerPhoto,reviewerName, reviewerEmail, reviewText, rating } = review;
+    const {  reviewerPhoto,reviewerName, reviewText, rating } = review;
     
     return (
         <div className="mb-5 border-2 bg-myprimary text-mybg p-2">

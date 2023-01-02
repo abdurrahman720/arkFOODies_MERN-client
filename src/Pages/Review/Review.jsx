@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { UserContext } from "../../Context/UserContext/Context";
 
@@ -7,8 +7,8 @@ const Review = () => {
   const { user } = useContext(UserContext);
   //   const [rating, setRating] = useState(null);
 
-  const { _id, title } = recipe;
-    const navigate = useNavigate()
+  const { _id, title, image } = recipe;
+  const navigate = useNavigate();
   const handlePlaceReview = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -19,6 +19,8 @@ const Review = () => {
 
     const review = {
       recipeID: _id,
+        recipeTitle: title,
+      recipeImage: image,
       reviewerName: name,
       reviewerEmail: email,
       reviewerPhoto: user?.photoURL,
@@ -39,9 +41,8 @@ const Review = () => {
         console.log(data);
         if (data.acknowledged === true) {
           alert("Review posted successfully");
-            form.reset();
-            navigate(`/recipe/${_id}`)
-            
+          form.reset();
+          navigate(`/recipe/${_id}`);
         }
       });
   };
