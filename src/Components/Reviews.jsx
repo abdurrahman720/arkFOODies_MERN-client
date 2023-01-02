@@ -8,8 +8,8 @@ const Reviews = ({ review }) => {
         <div className="mb-5 border-2 bg-myprimary text-mybg p-2">
             <div className="flex justify-between">
             <div className="flex items-center font-custom1"> 
-                <img className="w-10 rounded" src={reviewerPhoto} alt="" />
-                <p>{reviewerName }</p>
+                <img className="w-10 h-10 rounded" src={reviewerPhoto} alt="" />
+                <p className="mx-2">{reviewerName }</p>
                 </div>
                 <div className="flex items-center">
                     <p>{rating} </p>

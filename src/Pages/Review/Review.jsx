@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { UserContext } from "../../Context/UserContext/Context";
 
 const Review = () => {
@@ -8,7 +8,7 @@ const Review = () => {
   //   const [rating, setRating] = useState(null);
 
   const { _id, title } = recipe;
-
+    const navigate = useNavigate()
   const handlePlaceReview = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -39,7 +39,9 @@ const Review = () => {
         console.log(data);
         if (data.acknowledged === true) {
           alert("Review posted successfully");
-          form.reset();
+            form.reset();
+            navigate(`/recipe/${_id}`)
+            
         }
       });
   };

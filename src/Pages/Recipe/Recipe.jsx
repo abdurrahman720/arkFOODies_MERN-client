@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaRegSadCry } from "react-icons/fa";
 import Reviews from "../../Components/Reviews";
 const Recipe = () => {
   const { recipe } = useLoaderData();
@@ -34,7 +34,7 @@ const Recipe = () => {
           </h2>
           <p className="font-custom2 font-bold text-2xl">
             Recipe Details:{" "}
-            <span className="font-custom2 text-myprimary text-xl">
+            <span className="font-sans text-myprimary text-xl">
               {" "}
               {description}
             </span>
@@ -57,11 +57,11 @@ const Recipe = () => {
         <h2 className="card-title justify-center text-3xl font-custom1 py-10">
           Let's Check What Are Said by the Community about this Cuisine!!
               </h2>
-              <div className="mb-5">
-                  <Link to={`/review/${_id}`}><p>Add your own review: </p></Link>
+              <div className="mb-5 text-center">
+                  <Link to={`/review/${_id}`}><button className="btn btn-bgprimary font-custom1">Add your own review! </button></Link>
               </div>
               {
-                  reviews?.length===0? <p>No reviews</p> : <div className="p-5">
+                  reviews?.length===0?<div className="flex justify-center items-center"> <p className="text-center text-myprimary">No reviews Yet for this recipe!  </p><FaRegSadCry/></div> : <div className="p-5">
                   {
                       reviews.map(review=><Reviews key={review._id} review={review}></Reviews>)
                   }
