@@ -1,8 +1,11 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../Context/UserContext/Context";
+import { ToastContainer, toast } from "react-toastify";
+import useTitle from "../../hooks/useTitle";
 
 const AddRecipe = () => {
+  useTitle("Add Recipe");
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
     const handlePlaceRecipe = (e) => {
@@ -30,7 +33,16 @@ const AddRecipe = () => {
         }).then(res => res.json()).then(data => {
             if (data.insertedId) {
               form.reset();
-              alert('Recipe Added successfully!');
+              toast.success('Recipe has been added successfully!', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                });
               navigate("/myrecipes")
            }
         })
@@ -39,6 +51,18 @@ const AddRecipe = () => {
 
   return (
     <div className="bg-mybg text-center ">
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <h1 className="text-3xl font-custom1 text-myprimary">
         {" "}
         Add your recipe and let the people taste your cuisine!

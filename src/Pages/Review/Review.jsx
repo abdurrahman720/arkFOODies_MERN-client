@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { UserContext } from "../../Context/UserContext/Context";
-
+import { ToastContainer, toast } from "react-toastify";
+import useTitle from "../../hooks/useTitle";
 const Review = () => {
+  useTitle("Post Review");
   const { recipe } = useLoaderData();
   const { user } = useContext(UserContext);
   //   const [rating, setRating] = useState(null);
@@ -40,7 +42,16 @@ const Review = () => {
       .then((data) => {
         
         if (data.acknowledged === true) {
-          alert("Review posted successfully");
+          toast.success('Review posted successfully!', {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            });
           form.reset();
           navigate(`/recipe/${_id}`);
         }
@@ -49,6 +60,18 @@ const Review = () => {
 
   return (
     <div className="bg-mybg text-center ">
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <h1 className="text-3xl font-custom1 text-myprimary">
         {" "}
         Review for {title}

@@ -1,7 +1,9 @@
 import React from 'react';
 import blog from '../../assets/png/blog.png'
+import useTitle from '../../hooks/useTitle';
 
 const Blog = () => {
+	useTitle("Blog")
     return (
         <div className="hero w-full bg-mybg">
       <div className="hero-content grid md:grid-cols-2 gap-20 my-10 flex-col lg:flex-row">

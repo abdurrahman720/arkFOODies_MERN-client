@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import RecipiesCard from "../../Components/RecipiesCard";
+import useTitle from "../../hooks/useTitle";
 import Banner from "./Banner";
 import Community from "./Community";
 import Statics from "./Statics";
 
 const Home = () => {
+  useTitle("Home")
   const [recipeLimit, setRecipeLimit] = useState([]);
 
   useEffect(() => {

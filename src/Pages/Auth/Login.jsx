@@ -2,8 +2,10 @@ import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import login from "../../assets/png/join.png";
 import { UserContext } from "../../Context/UserContext/Context";
+import useTitle from "../../hooks/useTitle";
 
 const Login = () => {
+  useTitle('Login');
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
@@ -51,15 +53,36 @@ const Login = () => {
   };
 
   const handleGoogleSign = () => {
-    googleSign().then(userCredentials => {
+    googleSign().then((userCredentials) => {
+
       const user = userCredentials.user;
-        console.log(user);
-          navigate(from,{replace:true}).catch((err) => {
-            console.log(err);
-            setError(err.message);
-          });
-    })
-  }
+      
+      const currentUser = {
+        email: user?.email,
+      };
+
+      fetch("http://localhost:5001/jwt", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(currentUser),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          //set on localstorage
+          localStorage.setItem("arkFOODies-token", data.token);
+          console.log(data);
+          navigate(from, { replace: true });
+        })
+
+        .catch((err) => {
+          console.log(err);
+          setError(err.message);
+        });
+    });
+  };
 
 
 

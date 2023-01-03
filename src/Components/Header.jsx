@@ -2,13 +2,23 @@ import React, { useContext } from "react";
 import { NavLink, Link } from "react-router-dom";
 import logo from "../assets/png/logo-no-background.png";
 import { UserContext } from "../Context/UserContext/Context";
+import { ToastContainer, toast } from "react-toastify";
 const Header = () => {
   const { user, logOut } = useContext(UserContext);
 
   const handleLogOut = () => {
     logOut()
       .then(() => {
-        alert("Log Out Success");
+        toast.info('Logged Out!', {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          });
       })
       .catch((err) => {
         console.log(err);
@@ -17,6 +27,18 @@ const Header = () => {
 
   return (
     <div className="navbar bg-mybg font-custom1">
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -70,7 +92,7 @@ const Header = () => {
                 Add Recipe
               </NavLink>
             </li>
-          
+
             {user?.uid && (
               <>
                 <li>
@@ -95,7 +117,7 @@ const Header = () => {
                 </li>
               </>
             )}
-              <li>
+            <li>
               <NavLink
                 className={({ isActive }) =>
                   isActive ? "btn btn-active btn-ghost" : ""
@@ -104,7 +126,7 @@ const Header = () => {
               >
                 Blog
               </NavLink>
-            </li> 
+            </li>
           </ul>
         </div>
         <img className="w-16 m-0 p-0" src={logo} alt="" />
@@ -142,7 +164,7 @@ const Header = () => {
               Add Recipe
             </NavLink>
           </li>
-          
+
           {user?.uid && (
             <>
               <li>

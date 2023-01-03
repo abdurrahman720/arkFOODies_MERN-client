@@ -2,14 +2,15 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import RecipiesCard from '../../Components/RecipiesCard';
 import { UserContext } from '../../Context/UserContext/Context';
+import useTitle from '../../hooks/useTitle';
 
 const MyRecipes = () => {
-
+    useTitle("MyRecipies")
     const { user, logOut } = useContext(UserContext);
     const [myRecipes, setaMyRecipes] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5001/recipes?email=${user?.email}`, {
+        fetch(`http://localhost:5001/user-recipes?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem("arkFOODies-token")}`
               }

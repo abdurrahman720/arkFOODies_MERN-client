@@ -3,7 +3,11 @@ import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { FaStar, FaRegSadCry } from "react-icons/fa";
 import Reviews from "../../Components/Reviews";
 import { UserContext } from "../../Context/UserContext/Context";
+import { ToastContainer, toast } from "react-toastify";
+import useTitle from "../../hooks/useTitle";
+
 const Recipe = () => {
+  useTitle("Recipe");
   const { recipe } = useLoaderData();
   const navigate = useNavigate()
     // console.log(recipe);
@@ -38,8 +42,18 @@ const Recipe = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount > 0) {
+            toast.success('Recipe deleted successfully!', {
+              position: "top-center",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: false,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+              });
             navigate('/myrecipes')
-            alert("Deleted");
+           
           }
         });
     }
@@ -47,6 +61,18 @@ const Recipe = () => {
 
   return (
     <div className="bg-mybg">
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <div className="card w-full mx-auto bg-mybg">
         <figure>
           <img className="w-3/4" src={image} alt={title} />

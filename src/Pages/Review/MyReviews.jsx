@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import MyReviewCard from "../../Components/MyReviewCard";
 import { Link } from "react-router-dom";
-
+import { ToastContainer, toast } from "react-toastify";
 import { UserContext } from "../../Context/UserContext/Context";
+import useTitle from "../../hooks/useTitle";
 
 const MyReviews = () => {
+  useTitle("MyReviews");
   const { user, logOut } = useContext(UserContext);
     const [MyReviews, setMyReviews] = useState([]);
     const [selectedReview, setSelectedReview] = useState({})
@@ -59,7 +61,16 @@ const MyReviews = () => {
         }).then(res => res.json()).then(data => {
             console.log(data);
             if (data.modifiedCount > 0) {
-                alert('Updated review successfully');
+              toast.success('Review updated successfully!', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                });
                 const updatedReviewToShow = MyReviews.find(r => r._id === selectedReview._id);
                 updatedReviewToShow.reviewText = reviewText;
                 updatedReviewToShow.rating = rating;
@@ -77,7 +88,16 @@ const MyReviews = () => {
             method: 'DELETE',
         }).then(res => res.json()).then(data => {
             if (data.deletedCount > 0) {
-                
+              toast.success('Review deleted successfully!', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                });
                 const remaining = MyReviews.filter(r => r._id !== id);
                 setMyReviews(remaining)
             }
@@ -88,6 +108,18 @@ const MyReviews = () => {
 
   return (
     <div className="bg-mybg md:p-20">
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       {MyReviews.length === 0 ? (
         <div className="text-center">
           <Link to="/recipes">

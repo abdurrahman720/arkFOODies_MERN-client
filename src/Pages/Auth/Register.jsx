@@ -2,17 +2,21 @@ import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import login from "../../assets/png/join.png";
 import { UserContext } from "../../Context/UserContext/Context";
+import { ToastContainer, toast } from "react-toastify";
+import useTitle from "../../hooks/useTitle";
 
 const Register = () => {
-  const { emailSignUp, updateUser,  googleSign } = useContext(UserContext);
+  useTitle('Register');
+  const { emailSignUp, updateUser, googleSign } = useContext(UserContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
   const [error, setError] = useState("");
 
   const handleSignUp = (e) => {
+    
     e.preventDefault();
-    setError("")
+    setError("");
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
@@ -22,31 +26,40 @@ const Register = () => {
       const user = userCredentials.user;
 
       const currentUser = {
-        email: user?.email
-      }
-
-      fetch('http://localhost:5001/jwt', {
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json'
-          },
-          body: JSON.stringify(currentUser)
-        })
-          .then(res => res.json())
-          .then(data => {
-            console.log(data);
-            //set on localstorage
-            localStorage.setItem("arkFOODies-token", data.token);
-            console.log(data)
-            navigate(from,{replace:true})
-        })
+        email: user?.email,
+      };
+      //jwt token
+      fetch("http://localhost:5001/jwt", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(currentUser),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          //set on localstorage
+          localStorage.setItem("arkFOODies-token", data.token);
+          toast.success('Registration successfull!', {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            });
+          navigate(from, { replace: true });
+        });
       updateUser(name, photo)
         .then(() => {
           console.log("updated name");
         })
         .catch((err) => {
           console.log(err);
-          setError(err.message)
+          setError(err.message);
         });
 
       navigate(from, { replace: true });
@@ -54,18 +67,61 @@ const Register = () => {
   };
 
   const handleGoogleSign = () => {
-    googleSign().then(userCredentials => {
+    googleSign().then((userCredentials) => {
+
       const user = userCredentials.user;
-        console.log(user);
-          navigate(from,{replace:true}).catch((err) => {
-            console.log(err);
-            setError(err.message);
-          });
-    })
-  }
+
+      const currentUser = {
+        email: user?.email,
+      };
+
+      fetch("http://localhost:5001/jwt", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(currentUser),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          //set on localstorage
+          localStorage.setItem("arkFOODies-token", data.token);
+          console.log(data);
+          toast.success('Registration successfull!', {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            });
+          navigate(from, { replace: true });
+        })
+
+        .catch((err) => {
+          console.log(err);
+          setError(err.message);
+        });
+    });
+  };
 
   return (
     <div className="hero w-full bg-mybg">
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <div className="hero-content grid md:grid-cols-2 gap-20 my-10 flex-col lg:flex-row">
         <div className="text-center lg:text-left">
           <img className="w-3/4" src={login} alt="" />

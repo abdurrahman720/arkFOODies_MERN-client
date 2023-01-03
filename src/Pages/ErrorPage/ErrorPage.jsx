@@ -2,7 +2,9 @@ import React from "react";
 import error from "../../assets/png/error.png";
 import Footer from "../../Components/Footer";
 import Header from "../../Components/Header";
+import useTitle from "../../hooks/useTitle";
 const ErrorPage = () => {
+  useTitle("Page Not Found")
   return (
     <div className="">
       <Header></Header>
