@@ -10,6 +10,7 @@ import Recipies from "../Pages/Recipe/Recipies";
 import Review from "../Pages/Review/Review";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import AddRecipe from "../Pages/Recipe/AddRecipe";
+import MyRecipes from "../Pages/Recipe/MyRecipes";
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
         {
             path: '/addrecipe',
             element: <AddRecipe></AddRecipe>
+        },
+        {
+            path: '/myrecipes',
+            element: <MyRecipes></MyRecipes>
         }
     ],
   },

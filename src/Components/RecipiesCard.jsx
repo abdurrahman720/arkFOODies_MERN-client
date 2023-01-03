@@ -1,7 +1,7 @@
 import React from "react";
 import { FaStar } from 'react-icons/fa';
 import { Link } from "react-router-dom";
-const RecipiesCard = ({ recipe }) => {
+const RecipiesCard = ({ recipe, user }) => {
   const { _id, title, image, description, cuisine, recipeType, rating } =
     recipe;
   return (
@@ -20,7 +20,9 @@ const RecipiesCard = ({ recipe }) => {
           <div className="badge badge-outline font-custom2">{recipeType}</div>
               </div>
               <div className="card-actions justify-center mt-4">
-       <Link to={`/recipe/${_id}`}> <button className="btn btn-outline btn-myprimary font-custom1">Try It!</button></Link>
+          {
+            user?.email ? <Link to={`/recipe/${_id}`}> <button className="btn btn-outline btn-myprimary font-custom1">Details</button></Link> : <Link to={`/recipe/${_id}`}> <button className="btn btn-outline btn-myprimary font-custom1">Try It!</button></Link>
+       }
       </div>
       </div>
       

@@ -11,7 +11,7 @@ const Recipies = () => {
       });
   }, []);
   return (
-    <div>
+    
       <div className="recipe py-10 bg-mybg">
         <h2 className="text-3xl text-center mb-10 font-custom1 text-myprimary">
           Taste the amaiton recipes from all over the world
@@ -23,7 +23,7 @@ const Recipies = () => {
         </div>
         
       </div>
-    </div>
+ 
   );
 };
 
