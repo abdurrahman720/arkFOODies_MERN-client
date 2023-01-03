@@ -5,17 +5,27 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../../Context/UserContext/Context";
 
 const MyReviews = () => {
-  const { user } = useContext(UserContext);
+  const { user, logOut } = useContext(UserContext);
     const [MyReviews, setMyReviews] = useState([]);
     const [selectedReview, setSelectedReview] = useState({})
 
   useEffect(() => {
-    fetch(`http://localhost:5001/reviews?email=${user?.email}`)
-      .then((res) => res.json())
+    fetch(`http://localhost:5001/reviews?email=${user?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("arkFOODies-token")}`
+      }
+    })
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          localStorage.removeItem("arkFOODies-token");
+          return logOut();
+        }
+        return res.json();
+      })
       .then((data) => {
         setMyReviews(data);
-      });
-  }, [user?.email]);
+      }).catch(err=>console.log(err))
+  }, [user?.email, logOut]);
     
   const handleEdit = (id) => {
         

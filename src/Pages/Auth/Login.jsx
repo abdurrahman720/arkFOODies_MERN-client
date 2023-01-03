@@ -23,8 +23,26 @@ const Login = () => {
         const currentUser = {
           email: user?.email,
         };
-          console.log(currentUser);
-          navigate(from,{replace:true})
+          //jwt token
+        
+        fetch('http://localhost:5001/jwt', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(currentUser)
+        })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+            //set on localstorage
+            localStorage.setItem("arkFOODies-token", data.token);
+            console.log(data)
+            navigate(from,{replace:true})
+        })
+        
+        
+         
       })
       .catch((err) => {
         console.log(err);

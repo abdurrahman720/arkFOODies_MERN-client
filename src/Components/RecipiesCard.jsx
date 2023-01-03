@@ -1,13 +1,18 @@
 import React from "react";
 import { FaStar } from 'react-icons/fa';
 import { Link } from "react-router-dom";
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 const RecipiesCard = ({ recipe, user }) => {
   const { _id, title, image, description, cuisine, recipeType, rating } =
     recipe;
   return (
     <div className="card w-96 mx-auto bg-mybg shadow-2xl">
       <figure>
-        <img src={image} alt={title} />
+      <PhotoProvider>
+      <PhotoView src={image}>
+            <img src={image } alt="" />
+      </PhotoView>
+    </PhotoProvider>
       </figure>
       <div className="card-body">
         <h2 className="card-title font-custom1">

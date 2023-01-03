@@ -5,16 +5,27 @@ import { UserContext } from '../../Context/UserContext/Context';
 
 const MyRecipes = () => {
 
-    const { user } = useContext(UserContext);
+    const { user, logOut } = useContext(UserContext);
     const [myRecipes, setaMyRecipes] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5001/recipes?email=${user?.email}`)
-            .then(res => res.json())
-            .then(data => {
-            setaMyRecipes(data)
+        fetch(`http://localhost:5001/recipes?email=${user?.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem("arkFOODies-token")}`
+              }
         })
-    },[user?.email])
+        .then((res) => {
+            if (res.status === 401 || res.status === 403) {
+              localStorage.removeItem("arkFOODies-token");
+              return logOut();
+            }
+            return res.json();
+          })
+            .then(data => {
+                setaMyRecipes(data)
+                
+        }).catch(err => console.log(err))
+    },[user?.email,logOut])
     
 
 
