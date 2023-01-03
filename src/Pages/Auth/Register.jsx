@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import useTitle from "../../hooks/useTitle";
 
 const Register = () => {
-  useTitle('Register');
+  useTitle("Register");
   const { emailSignUp, updateUser, googleSign } = useContext(UserContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -14,7 +14,6 @@ const Register = () => {
   const [error, setError] = useState("");
 
   const handleSignUp = (e) => {
-    
     e.preventDefault();
     setError("");
     const form = e.target;
@@ -29,7 +28,7 @@ const Register = () => {
         email: user?.email,
       };
       //jwt token
-      fetch("http://localhost:5001/jwt", {
+      fetch("https://ark-foodies-server.vercel.app/jwt", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -41,7 +40,7 @@ const Register = () => {
           console.log(data);
           //set on localstorage
           localStorage.setItem("arkFOODies-token", data.token);
-          toast.success('Registration successfull!', {
+          toast.success("Registration successfull!", {
             position: "top-center",
             autoClose: 2000,
             hideProgressBar: false,
@@ -50,7 +49,7 @@ const Register = () => {
             draggable: true,
             progress: undefined,
             theme: "colored",
-            });
+          });
           navigate(from, { replace: true });
         });
       updateUser(name, photo)
@@ -68,14 +67,13 @@ const Register = () => {
 
   const handleGoogleSign = () => {
     googleSign().then((userCredentials) => {
-
       const user = userCredentials.user;
 
       const currentUser = {
         email: user?.email,
       };
 
-      fetch("http://localhost:5001/jwt", {
+      fetch("https://ark-foodies-server.vercel.app/jwt", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -88,7 +86,7 @@ const Register = () => {
           //set on localstorage
           localStorage.setItem("arkFOODies-token", data.token);
           console.log(data);
-          toast.success('Registration successfull!', {
+          toast.success("Registration successfull!", {
             position: "top-center",
             autoClose: 2000,
             hideProgressBar: false,
@@ -97,7 +95,7 @@ const Register = () => {
             draggable: true,
             progress: undefined,
             theme: "colored",
-            });
+          });
           navigate(from, { replace: true });
         })
 

@@ -8,45 +8,51 @@ const AddRecipe = () => {
   useTitle("Add Recipe");
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
-    const handlePlaceRecipe = (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const title = form.title.value;
-        const description = form.description.value;
-        const image = form.image.value;
-        const cuisine = form.cuisine.value;
-        const recipeType = form.recipeType.value;
-        const rating = form.rating.value;
+  const handlePlaceRecipe = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const title = form.title.value;
+    const description = form.description.value;
+    const image = form.image.value;
+    const cuisine = form.cuisine.value;
+    const recipeType = form.recipeType.value;
+    const rating = form.rating.value;
 
-        const newRecipe = {
-            recipeProvider: user?.email,
-            title, description, image,cuisine,recipeType, rating
+    const newRecipe = {
+      recipeProvider: user?.email,
+      title,
+      description,
+      image,
+      cuisine,
+      recipeType,
+      rating,
+    };
+
+    // console.log(newRecipe)
+    fetch(`https://ark-foodies-server.vercel.app/recipe`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newRecipe),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          form.reset();
+          toast.success("Recipe has been added successfully!", {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+          navigate("/myrecipes");
         }
-
-        // console.log(newRecipe)
-        fetch(`http://localhost:5001/recipe`, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newRecipe)
-        }).then(res => res.json()).then(data => {
-            if (data.insertedId) {
-              form.reset();
-              toast.success('Recipe has been added successfully!', {
-                position: "top-center",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-                });
-              navigate("/myrecipes")
-           }
-        })
-
+      });
   };
 
   return (
@@ -77,8 +83,8 @@ const AddRecipe = () => {
               name="title"
               placeholder="Hilsha Fish Curry"
               id=""
-              
-            required/>
+              required
+            />
           </div>
 
           <div className="flex">
@@ -89,7 +95,8 @@ const AddRecipe = () => {
               name="image"
               placeholder="https://www.example.com/hilsha-fish-curry.jpeg"
               id=""
-            required/>
+              required
+            />
           </div>
           <div className="flex">
             <p className="font-custom1 font-bold m-2">Cuisine: </p>
@@ -99,7 +106,8 @@ const AddRecipe = () => {
               name="cuisine"
               placeholder="Bangladeshi,Spanish..."
               id=""
-            required/>
+              required
+            />
           </div>
           <div className="flex">
             <p className="font-custom1 font-bold m-2">Recipe Type: </p>
@@ -109,7 +117,8 @@ const AddRecipe = () => {
               name="recipeType"
               placeholder="Main Course,.."
               id=""
-            required/>
+              required
+            />
           </div>
         </div>
 

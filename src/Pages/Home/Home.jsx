@@ -7,11 +7,11 @@ import Community from "./Community";
 import Statics from "./Statics";
 
 const Home = () => {
-  useTitle("Home")
+  useTitle("Home");
   const [recipeLimit, setRecipeLimit] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5001/recipeslimit`)
+    fetch(`https://ark-foodies-server.vercel.app/recipeslimit`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

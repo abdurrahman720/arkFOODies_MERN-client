@@ -16,8 +16,8 @@ import Blog from "../Pages/Blog/Blog";
 export const router = createBrowserRouter([
   {
     path: "/",
-        element: <Main></Main>,
-    errorElement:<ErrorPage></ErrorPage>,
+    element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -32,39 +32,57 @@ export const router = createBrowserRouter([
         element: <Recipies></Recipies>,
       },
       {
-          path: "/recipe/:id",
-          loader: ({params})=>fetch(`http://localhost:5001/recipe/${params.id}`),
-          element: <Recipe></Recipe>
-        },
-        {
-            path: "/review/:id",
-            loader: ({params})=>fetch(`http://localhost:5001/recipe/${params.id}`),
-            element:<PrivateRoute><Review></Review></PrivateRoute>
-        },
-        {
-            path: '/login',
-            element:<Login></Login>
-        },
-        {
-            path: '/register',
-            element:<Register></Register>
-        },
-        {
-            path: '/myreviews',
-            element:<PrivateRoute><MyReviews></MyReviews></PrivateRoute>
-        },
-        {
-            path: '/addrecipe',
-            element: <PrivateRoute><AddRecipe></AddRecipe></PrivateRoute>
-        },
-        {
-            path: '/myrecipes',
-            element: <PrivateRoute><MyRecipes></MyRecipes></PrivateRoute>
-        },
-        {
-            path: '/blog',
-            element: <Blog></Blog>
-        }
+        path: "/recipe/:id",
+        loader: ({ params }) =>
+          fetch(`https://ark-foodies-server.vercel.app/recipe/${params.id}`),
+        element: <Recipe></Recipe>,
+      },
+      {
+        path: "/review/:id",
+        loader: ({ params }) =>
+          fetch(`https://ark-foodies-server.vercel.app/recipe/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <Review></Review>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+      {
+        path: "/myreviews",
+        element: (
+          <PrivateRoute>
+            <MyReviews></MyReviews>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/addrecipe",
+        element: (
+          <PrivateRoute>
+            <AddRecipe></AddRecipe>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/myrecipes",
+        element: (
+          <PrivateRoute>
+            <MyRecipes></MyRecipes>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/blog",
+        element: <Blog></Blog>,
+      },
     ],
   },
 ]);

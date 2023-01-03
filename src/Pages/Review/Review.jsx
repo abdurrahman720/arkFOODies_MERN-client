@@ -21,7 +21,7 @@ const Review = () => {
 
     const review = {
       recipeID: _id,
-        recipeTitle: title,
+      recipeTitle: title,
       recipeImage: image,
       reviewerName: name,
       reviewerEmail: email,
@@ -29,9 +29,9 @@ const Review = () => {
       reviewText: reviewText,
       rating: rating,
     };
-    
+
     //positng the review to server with fetch
-    fetch("http://localhost:5001/review", {
+    fetch("https://ark-foodies-server.vercel.app/review", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -40,9 +40,8 @@ const Review = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        
         if (data.acknowledged === true) {
-          toast.success('Review posted successfully!', {
+          toast.success("Review posted successfully!", {
             position: "top-center",
             autoClose: 2000,
             hideProgressBar: false,
@@ -51,7 +50,7 @@ const Review = () => {
             draggable: true,
             progress: undefined,
             theme: "colored",
-            });
+          });
           form.reset();
           navigate(`/recipe/${_id}`);
         }
