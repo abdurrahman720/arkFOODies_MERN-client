@@ -61,18 +61,18 @@ const Header = () => {
               </NavLink>
             </li>
             <li>
-                  <NavLink
-                    className={({ isActive }) =>
-                      isActive ? "btn btn-active btn-ghost" : ""
-                    }
-                    to="/addrecipe"
-                  >
-                    Add Recipe
-                  </NavLink>
-                </li>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "btn btn-active btn-ghost" : ""
+                }
+                to="/addrecipe"
+              >
+                Add Recipe
+              </NavLink>
+            </li>
+          
             {user?.uid && (
               <>
-                
                 <li>
                   <NavLink
                     className={({ isActive }) =>
@@ -95,6 +95,16 @@ const Header = () => {
                 </li>
               </>
             )}
+              <li>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "btn btn-active btn-ghost" : ""
+                }
+                to="/blog"
+              >
+                Blog
+              </NavLink>
+            </li> 
           </ul>
         </div>
         <img className="w-16 m-0 p-0" src={logo} alt="" />
@@ -123,18 +133,18 @@ const Header = () => {
             </NavLink>
           </li>
           <li>
-                  <NavLink
-                    className={({ isActive }) =>
-                      isActive ? "btn btn-active btn-ghost" : ""
-                    }
-                    to="/addrecipe"
-                  >
-                    Add Recipe
-                  </NavLink>
-                </li>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "btn btn-active btn-ghost" : ""
+              }
+              to="/addrecipe"
+            >
+              Add Recipe
+            </NavLink>
+          </li>
+          
           {user?.uid && (
             <>
-              
               <li>
                 <NavLink
                   className={({ isActive }) =>
@@ -157,6 +167,16 @@ const Header = () => {
               </li>
             </>
           )}
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "btn btn-active btn-ghost" : ""
+              }
+              to="/blog"
+            >
+              Blog
+            </NavLink>
+          </li>
         </ul>
       </div>
       <div className="navbar-end">

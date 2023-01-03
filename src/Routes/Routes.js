@@ -12,6 +12,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import AddRecipe from "../Pages/Recipe/AddRecipe";
 import MyRecipes from "../Pages/Recipe/MyRecipes";
 import PrivateRoute from "../Pages/Auth/PrivateRoute";
+import Blog from "../Pages/Blog/Blog";
 
 export const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
         {
             path: '/myrecipes',
             element: <PrivateRoute><MyRecipes></MyRecipes></PrivateRoute>
+        },
+        {
+            path: '/blog',
+            element: <Blog></Blog>
         }
     ],
   },

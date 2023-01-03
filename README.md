@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# ARK FOODies Community
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Visit Now: [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Functionality and Features
 
-In the project directory, you can run:
+This is one of my Full Stack Web Application build using MERN STACK Technology.
 
-### `yarn start`
+### `Functionality`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+ **MERN STACK Technology for Fronted and Backend Development**
+1. Used ReactJs for SPA Fronted Development
+2. User Authentication with FireBase and Authorisation with JWT Token
+3. Database Management with MongoDB CRUD operations 
+4. Backend Server Management with NodeJs with ExpressJS framework
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `yarn test`
+### `Features`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. A FullStack working website for Foodie Community
+2. Minimalistic Design with Tailwind CSS 
+3. Users can post, edit and delete their own reviews on others recipe.
+4. Users can share and delete own recipe (Editing own recipes is coming soon…)
+5. As said above, users can manage their reviews and recipes from “My Reviews” and “My Recipes” page
+6. Users can not post reviews on their own recipes.
+7. Email-Password and Google Authentication
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `Known Bugs/issues/limitations`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+*The project is at very intial level. Several Bugs maybe found*
+1. In input field, images can not be uploaded from local device. A link is needed...
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `Upcoming Feature`
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Image uploading from local device will be available
+2. Reviwes will be sorted by time
+3. Statistic of Recipes, Reviews, Users wil be updated dynamically 
+4. User Profile Page where they can update their name and photo with
+5. UI Design and Animations...
