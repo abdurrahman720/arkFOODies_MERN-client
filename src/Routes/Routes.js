@@ -11,6 +11,7 @@ import Review from "../Pages/Review/Review";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import AddRecipe from "../Pages/Recipe/AddRecipe";
 import MyRecipes from "../Pages/Recipe/MyRecipes";
+import PrivateRoute from "../Pages/Auth/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -38,7 +39,7 @@ export const router = createBrowserRouter([
         {
             path: "/review/:id",
             loader: ({params})=>fetch(`http://localhost:5001/recipe/${params.id}`),
-            element:<Review></Review>
+            element:<PrivateRoute><Review></Review></PrivateRoute>
         },
         {
             path: '/login',
@@ -50,15 +51,15 @@ export const router = createBrowserRouter([
         },
         {
             path: '/myreviews',
-            element:<MyReviews></MyReviews>
+            element:<PrivateRoute><MyReviews></MyReviews></PrivateRoute>
         },
         {
             path: '/addrecipe',
-            element: <AddRecipe></AddRecipe>
+            element: <PrivateRoute><AddRecipe></AddRecipe></PrivateRoute>
         },
         {
             path: '/myrecipes',
-            element: <MyRecipes></MyRecipes>
+            element: <PrivateRoute><MyRecipes></MyRecipes></PrivateRoute>
         }
     ],
   },

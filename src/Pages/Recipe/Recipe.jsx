@@ -6,7 +6,7 @@ import { UserContext } from "../../Context/UserContext/Context";
 const Recipe = () => {
   const { recipe } = useLoaderData();
   const navigate = useNavigate()
-    console.log(recipe);
+    // console.log(recipe);
   const {
     recipeProvider,
     title,
@@ -18,7 +18,7 @@ const Recipe = () => {
     _id,
   } = recipe;
   const { user } = useContext(UserContext);
-
+ 
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
@@ -81,8 +81,9 @@ const Recipe = () => {
       <hr />
       <div className="">
         <div className="mb-5 text-center">
-          {recipeProvider === user?.email && (
+          {recipeProvider === user?.email & user?.email !== undefined  ? (
             <div className="flex flex-col md:flex-row justify-center">
+        
               <button
                 onClick={() => handleDeleteRecipe(_id)}
                 className="btn btn-bgprimary font-custom1 mx-2"
@@ -92,20 +93,20 @@ const Recipe = () => {
               <button className="btn btn-bgprimary font-custom1 mx-2">
                 Edit{" "}
               </button>
-            </div>
-          )}
+            </div> 
+          ) : <div>{' '}</div>}
         </div>
         <h2 className="card-title justify-center text-3xl font-custom1 py-10 px-2">
           Let's Check What Are Said by the Community about this Cuisine!!
         </h2>
         <div className="mb-5 text-center">
-          {recipeProvider !== user?.email && (
+          {recipeProvider !== user?.email || user?.email===undefined ? (
             <Link to={`/review/${_id}`}>
               <button className="btn btn-bgprimary font-custom1">
                 Add your own review!{" "}
               </button>
             </Link>
-          )}
+          ) : <div>{" " }</div>}
         </div>
         {reviews?.length === 0 ? (
           <div className="flex justify-center items-center">

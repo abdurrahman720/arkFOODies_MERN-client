@@ -24,7 +24,7 @@ const Login = () => {
           email: user?.email,
         };
           console.log(currentUser);
-          navigate('/')
+          navigate(from,{replace:true})
       })
       .catch((err) => {
         console.log(err);

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import RecipiesCard from "../../Components/RecipiesCard";
 import Banner from "./Banner";
+import Community from "./Community";
+import Statics from "./Statics";
 
 const Home = () => {
   const [recipeLimit, setRecipeLimit] = useState([]);
@@ -28,13 +30,17 @@ const Home = () => {
             <RecipiesCard key={recipe._id} recipe={recipe}></RecipiesCard>
           ))}
         </div>
-        <div className="card-actions justify-center mt-4">
+        <div className="card-actions justify-center m-4">
           <Link to="/recipes">
             <button className="btn btn-outline btn-myprimary font-custom1">
               See All
             </button>
           </Link>
         </div>
+        {/* Community section */}
+        <Community></Community>
+        {/* Statics section */}
+        <Statics></Statics>
       </div>
     </div>
   );

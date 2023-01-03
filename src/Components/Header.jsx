@@ -60,9 +60,7 @@ const Header = () => {
                 Recipes
               </NavLink>
             </li>
-            {user?.uid && (
-              <>
-                <li>
+            <li>
                   <NavLink
                     className={({ isActive }) =>
                       isActive ? "btn btn-active btn-ghost" : ""
@@ -72,6 +70,9 @@ const Header = () => {
                     Add Recipe
                   </NavLink>
                 </li>
+            {user?.uid && (
+              <>
+                
                 <li>
                   <NavLink
                     className={({ isActive }) =>
@@ -121,18 +122,19 @@ const Header = () => {
               Recipes
             </NavLink>
           </li>
+          <li>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "btn btn-active btn-ghost" : ""
+                    }
+                    to="/addrecipe"
+                  >
+                    Add Recipe
+                  </NavLink>
+                </li>
           {user?.uid && (
             <>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? "btn btn-active btn-ghost" : ""
-                  }
-                  to="/addrecipe"
-                >
-                  Add Recipe
-                </NavLink>
-              </li>
+              
               <li>
                 <NavLink
                   className={({ isActive }) =>

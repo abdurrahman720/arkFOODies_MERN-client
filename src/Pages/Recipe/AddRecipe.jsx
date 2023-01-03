@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../Context/UserContext/Context";
 
 const AddRecipe = () => {
   const { user } = useContext(UserContext);
-
+  const navigate = useNavigate();
     const handlePlaceRecipe = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -28,8 +29,9 @@ const AddRecipe = () => {
             body: JSON.stringify(newRecipe)
         }).then(res => res.json()).then(data => {
             if (data.insertedId) {
-                form.reset()
-               alert('Recipe Added successfully!')
+              form.reset();
+              alert('Recipe Added successfully!');
+              navigate("/myrecipes")
            }
         })
 
