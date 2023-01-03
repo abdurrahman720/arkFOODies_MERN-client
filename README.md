@@ -1,6 +1,6 @@
 # ARK FOODies Community
-
-Visit Now: [Create React App](https://github.com/facebook/create-react-app).
+**Explore and share thousands of delicious recipes with our foodie community! Discover and review the best dishes from around the globe!**
+Visit Now: [ARK FOODies Community](https://ark-foodies.web.app/).
 
 ## Functionality and Features
 
@@ -10,11 +10,12 @@ This is one of my Full Stack Web Application build using MERN STACK Technology.
 
  **MERN STACK Technology for Fronted and Backend Development**
 1. Used ReactJs for Fronted Development
-2. User Authentication with FireBase and Authorisation with JWT Token
+2. User Authentication with FireBase and *Authorisation with JWT Token*
 3. Database Management with MongoDB CRUD operations 
 4. Backend Server Management with NodeJs with ExpressJS framework
 5. Used React-Router for Single Page Application
 6. React-Photo-View for better image view
+
 
 
 ### `App -Features`
