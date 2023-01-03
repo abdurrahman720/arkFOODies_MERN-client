@@ -9,6 +9,7 @@ import Recipe from "../Pages/Recipe/Recipe";
 import Recipies from "../Pages/Recipe/Recipies";
 import Review from "../Pages/Review/Review";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import AddRecipe from "../Pages/Recipe/AddRecipe";
 
 export const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ export const router = createBrowserRouter([
         {
             path: '/myreviews',
             element:<MyReviews></MyReviews>
+        },
+        {
+            path: '/addrecipe',
+            element: <AddRecipe></AddRecipe>
         }
     ],
   },

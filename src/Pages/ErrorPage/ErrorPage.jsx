@@ -4,7 +4,7 @@ import Footer from "../../Components/Footer";
 import Header from "../../Components/Header";
 const ErrorPage = () => {
   return (
-    <>
+    <div className="">
       <Header></Header>
       <div className="hero w-full bg-mybg shadow-2xl">
         <div className="hero-content grid md:grid-cols-2 gap-20 my-10 flex-col lg:flex-row">
@@ -18,7 +18,7 @@ const ErrorPage = () => {
         </div>
       </div>
       <Footer></Footer>
-    </>
+    </div>
   );
 };
 
